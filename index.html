@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ao遠征">
+<meta name="theme-color" content="#061a33">
+<title>Ao遠征アプリ</title>
+<style>
+:root{--txt:#f8fbff;--mut:#bcd0e8;--a:#57c8ff;--b:#a8eeff;--gold:#ffd65f;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;background:linear-gradient(180deg,#020710,#061a33 45%,#020713);color:var(--txt);line-height:1.55}
+.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:44px 16px;background:radial-gradient(circle at 50% 15%,rgba(88,200,255,.36),transparent 38%)}
+.badge{margin:0 auto 18px;padding:7px 14px;border:1px solid rgba(168,238,255,.55);border-radius:999px;color:var(--b);font-size:12px;letter-spacing:.12em}
+h1{font-size:31px;line-height:1.1;margin:0}.ao{font-size:82px;font-weight:900;margin:4px 0;background:linear-gradient(90deg,#fff,#69d6ff,#fff);-webkit-background-clip:text;color:transparent}.sub{color:var(--mut)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:28px auto 0;max-width:380px}.stat div{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:11px 5px}.stat b{display:block;color:var(--b);font-size:20px}
+nav{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow:auto;padding:10px;background:rgba(2,7,16,.84);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.10)}nav a{white-space:nowrap;color:var(--txt);text-decoration:none;background:rgba(255,255,255,.1);border-radius:999px;padding:8px 12px;font-size:13px}
+main{max-width:900px;margin:auto;padding:12px 12px 118px}.card{background:linear-gradient(180deg,rgba(14,36,67,.97),rgba(7,27,52,.97));border:1px solid rgba(168,238,255,.18);border-radius:24px;padding:17px;margin:15px 0;box-shadow:0 16px 45px rgba(0,0,0,.32)}
+h2{margin:0 0 13px;font-size:23px}h3{margin:18px 0 8px;color:var(--b);font-size:16px}.note,.small{color:var(--mut);font-size:13px}
+.time{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08)}.t{font-weight:900;color:var(--b)}
+.btn{display:block;text-align:center;text-decoration:none;color:#031324;font-weight:900;background:linear-gradient(90deg,var(--a),var(--b));border-radius:15px;padding:12px 10px;margin:8px 0}.btn.dark{color:var(--txt);background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.row{display:grid;grid-template-columns:30px 1fr 72px 56px;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}.head{font-size:12px;color:var(--mut);border-bottom:1px solid rgba(255,255,255,.16)}.name{font-size:14px}.price{font-weight:900;color:var(--gold);text-align:right}
+input[type=checkbox]{transform:scale(1.35)}input[type=number]{width:52px;border:0;border-radius:10px;padding:8px 2px;text-align:center;background:rgba(255,255,255,.11);color:#fff;font-size:16px}textarea,.cost{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.08);color:#fff;padding:11px;font:inherit}
+.money{width:100%;border-collapse:collapse}.money td{padding:10px 4px;border-bottom:1px solid rgba(255,255,255,.08)}.money td:last-child{text-align:right;color:var(--gold);font-weight:900}.check label{display:block;background:rgba(255,255,255,.07);border-radius:13px;padding:10px 12px;margin:8px 0}
+.totalbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(2,7,16,.88);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.14)}.totalinner{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.totalinner b{font-size:23px;color:var(--gold)}.perk{grid-column:1/3;text-align:center;border-radius:13px;padding:7px;font-weight:900;background:rgba(255,255,255,.10)}.perk.ok{background:linear-gradient(90deg,#ffd65f,#fff2a4);color:#2b1d00}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}button{border:0;border-radius:13px;padding:10px;background:rgba(255,255,255,.12);color:#fff;font-weight:800}.footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 0}
+@media(max-width:430px){.grid2{grid-template-columns:1fr}.row{grid-template-columns:28px 1fr 62px 48px;gap:6px}.name{font-size:13px}.ao{font-size:68px}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="badge">LIGHT VERSION</div><h1>Ado STADIUM LIVE 2026</h1><div class="ao">Ao</div><div class="sub">NAdo専用 遠征Webアプリ<br>7/4(土) 日産スタジアム</div><div class="stat"><div><b>12:00</b>物販</div><div><b>C-205</b>整理券</div><div><b>A2</b>座席</div></div></section>
+<nav><a href="#schedule">予定</a><a href="#move">移動</a><a href="#maps">MAP</a><a href="#goods">物販</a><a href="#money">費用</a><a href="#items">持物</a><a href="#save">保存</a></nav>
+<main>
+<section class="card" id="schedule"><h2>⏰ 当日スケジュール</h2>
+<div class="time"><div class="t">03:00</div><div>垂水区西脇 出発<br><span class="note">朝日プラザ雲雀ヶ丘 → 七宮交差点付近 → 東灘区田中町3丁目</span></div></div>
+<div class="time"><div class="t">04:00</div><div>東灘区田中町3丁目から高速へ</div></div>
+<div class="time"><div class="t">10:00</div><div>タイムズ横浜市伊勢佐木長者町地下駐車場 到着目標</div></div>
+<div class="time"><div class="t">11:00</div><div>日産スタジアム到着目標</div></div>
+<div class="time"><div class="t">12:00</div><div>物販 12:00〜13:00 / C-205</div></div>
+</section>
+
+<section class="card" id="move"><h2>🚗🚇 移動</h2>
+<a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=%E7%A5%9E%E6%88%B8%E5%B8%82%E5%9E%82%E6%B0%B4%E5%8C%BA%E8%A5%BF%E8%84%87&destination=%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BA%E6%A8%AA%E6%B5%9C%E5%B8%82%E4%BC%8A%E5%8B%A2%E4%BD%90%E6%9C%A8%E9%95%B7%E8%80%85%E7%94%BA%E5%9C%B0%E4%B8%8B%E9%A7%90%E8%BB%8A%E5%A0%B4&travelmode=driving" target="_blank">🚗 駐車場までナビ</a>
+<a class="btn dark" href="https://www.google.com/maps/dir/?api=1&origin=%E4%BC%8A%E5%8B%A2%E4%BD%90%E6%9C%A8%E9%95%B7%E8%80%85%E7%94%BA%E9%A7%85&destination=%E6%96%B0%E6%A8%AA%E6%B5%9C%E9%A7%85&travelmode=transit" target="_blank">🚇 地下鉄乗換</a>
+<a class="btn dark" href="https://www.google.com/maps/dir/?api=1&origin=%E6%96%B0%E6%A8%AA%E6%B5%9C%E9%A7%85&destination=%E6%97%A5%E7%94%A3%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%A2%E3%83%A0&travelmode=walking" target="_blank">🚶 新横浜→日産スタジアム</a>
+</section>
+
+<section class="card" id="maps"><h2>📍 Googleマップ</h2><div class="grid2">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BA%E6%A8%AA%E6%B5%9C%E5%B8%82%E4%BC%8A%E5%8B%A2%E4%BD%90%E6%9C%A8%E9%95%B7%E8%80%85%E7%94%BA%E5%9C%B0%E4%B8%8B%E9%A7%90%E8%BB%8A%E5%A0%B4" target="_blank">駐車場</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%81%E3%82%B5%E3%83%B3%E3%83%9B%E3%83%86%E3%83%AB%E6%A8%AA%E6%B5%9C%E4%BC%8A%E5%8B%A2%E4%BD%90%E6%9C%A8%E7%94%BA" target="_blank">ホテル</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E4%BC%8A%E5%8B%A2%E4%BD%90%E6%9C%A8%E9%95%B7%E8%80%85%E7%94%BA%E9%A7%85" target="_blank">伊勢佐木長者町駅</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E6%A8%AA%E6%B5%9C%E9%A7%85" target="_blank">新横浜駅</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E7%94%A3%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%A2%E3%83%A0" target="_blank">日産スタジアム</a>
+</div></section>
+
+<section class="card" id="goods"><h2>🛍️ 物販購入リスト＆自動計算</h2>
+<p class="note">軽量版なので画像なし。商品・金額・上限・自動計算は入ってる！</p>
+<div class="quick"><button onclick="clearAll()">クリア</button><button onclick="setOne()">チェック品を1個</button><button onclick="location.hash='totalAnchor'">合計へ</button></div>
+<h3>Ao オフィシャル</h3><div class="row head"><span></span><span>商品</span><span>単価</span><span>数</span></div><div id="ao"></div>
+<h3>秘密基地</h3><div class="row head"><span></span><span>商品</span><span>単価</span><span>数</span></div><div id="fc"></div>
+<h3>メモ</h3><textarea id="goodsMemo" rows="4" placeholder="例：ペンライト絶対、TシャツXL、ガチャ5回だけ"></textarea>
+</section>
+
+<section class="card" id="money"><h2>💰 絶対かかるお金</h2><table class="money">
+<tr><td>チケット代</td><td>64,290円（支払済）</td></tr>
+<tr><td>ホテル代</td><td><input class="cost" id="hotelCost" placeholder="あとで入力"></td></tr>
+<tr><td>駐車場代</td><td><input class="cost" id="parkCost" placeholder="あとで入力"></td></tr>
+<tr><td>高速代</td><td><input class="cost" id="tollCost" placeholder="あとで入力"></td></tr>
+<tr><td>ガソリン代</td><td><input class="cost" id="gasCost" placeholder="あとで入力"></td></tr>
+</table></section>
+
+<section class="card" id="items"><h2>🎒 持ち物チェック</h2><div class="check">
+<label><input type="checkbox" data-item="0">電子チケット</label><label><input type="checkbox" data-item="1">LINE物販整理券</label><label><input type="checkbox" data-item="2">スマホ・財布</label><label><input type="checkbox" data-item="3">モバイルバッテリー・ケーブル</label><label><input type="checkbox" data-item="4">500円玉（ガチャ用）</label><label><input type="checkbox" data-item="5">秘密基地ログイン済み画面</label><label><input type="checkbox" data-item="6">帽子・飲み物・タオル・日焼け止め</label>
+</div></section>
+
+<section class="card"><h2>📝 当日メモ</h2><textarea id="freeMemo" rows="5"></textarea></section>
+<section class="card" id="save"><h2>📱 保存メモ</h2><p>このファイル名は必ず <b>index.html</b> にしてGitHubへアップロード。</p></section>
+<div id="totalAnchor" class="footer">軽量版 / Produced by CHAdo</div>
+</main>
+<div class="totalbar"><div class="totalinner"><div>物販予定合計</div><b id="total">0円</b><div id="perk" class="perk">15,000円特典ラインまであと15,000円</div></div></div>
+<script>
+const GOODS = [["ファッショナブル「Ao」Tシャツ-A", 4300, 2, "Ao"], ["ファッショナブル「Ao」Tシャツ-d", 5000, 2, "Ao"], ["ファッショナブル「Ao」Tシャツ-o", 4800, 2, "Ao"], ["大進化！割とデカいかも？！キラキラペンライト", 6500, 2, "Ao"], ["「Ao」マフラータオル", 2800, 2, "Ao"], ["「Ao」ビッグタオル", 3800, 2, "Ao"], ["「Ao」冷感フード付きタオル", 3000, 2, "Ao"], ["日焼けしたくないね リバーシブルハット", 4500, 2, "Ao"], ["やっと出したんだね。おめでとうAdoちゃんぬいぐるみ", 3000, 1, "Ao"], ["引きこもれ！ぬいぐるみポーチセット", 4800, 1, "Ao"], ["こんにちは！はちゃんです＜復刻版＞", 1800, 1, "Ao"], ["まぐろ寿司", 1500, 1, "Ao"], ["ファッショナブル「Ao」トートバッグ", 3500, 2, "Ao"], ["はちゃんポーチ（寿司付き）", 2800, 2, "Ao"], ["貼り付けろ！ぺたぺたワッペンストラップ", 2500, 2, "Ao"], ["モテなさい！はちゃんリップホルダー", 1800, 2, "Ao"], ["輝きなさい！ペンライトリボン ver.2", 3000, 1, "Ao"], ["アクリルキーホルダー第二弾【ランダム6種】", 900, 10, "Ao"], ["ふわふわ応援棒 ver.2", 800, 2, "Ao"], ["キラキラシールセット", 3500, 2, "Ao"], ["どんどんあどっぷシール", 1200, 2, "Ao"], ["歯ルーン", 800, 2, "Ao"], ["ランダムポストカード【ランダム4種】", 600, 20, "Ao"], ["必要ですか？ショッパー", 500, 2, "Ao"], ["お子さまイヤーマフ", 2000, 2, "Ao"], ["公式Tシャツ ver.5 黒", 4300, 2, "秘密基地"], ["公式Tシャツ ver.5 白", 4300, 2, "秘密基地"], ["公式Tシャツ 夏休みイルカと共に ver. 黒", 4300, 2, "秘密基地"], ["フェイスタオル ver.4", 2500, 2, "秘密基地"], ["アクリルスタンド ver.2", 3500, 2, "秘密基地"], ["缶バッジ ver.5", 2500, 2, "秘密基地"]];
+const KEY="nado_ado_ao_light_v1_";
+const yen=n=>Number(n||0).toLocaleString("ja-JP")+"円";
+function rowHtml(g,idx){return `<div class="row"><input type="checkbox" data-g="${idx}"><div class="name">${g[0]}<br><span class="note">${g[2]}まで / ${g[3]}</span></div><div class="price">${yen(g[1])}</div><input type="number" min="0" max="${g[2]}" value="0" data-q="${idx}"></div>`}
+function render(){document.getElementById("ao").innerHTML=GOODS.map((g,i)=>g[3]=="Ao"?rowHtml(g,i):"").join("");document.getElementById("fc").innerHTML=GOODS.map((g,i)=>g[3]=="秘密基地"?rowHtml(g,i):"").join("");}
+function save(){document.querySelectorAll("[data-g]").forEach(e=>localStorage.setItem(KEY+"c"+e.dataset.g,e.checked?"1":"0"));document.querySelectorAll("[data-q]").forEach(e=>localStorage.setItem(KEY+"q"+e.dataset.q,e.value));document.querySelectorAll("[data-item]").forEach(e=>localStorage.setItem(KEY+"i"+e.dataset.item,e.checked?"1":"0"));["goodsMemo","freeMemo","hotelCost","parkCost","tollCost","gasCost"].forEach(id=>localStorage.setItem(KEY+id,document.getElementById(id).value));}
+function load(){document.querySelectorAll("[data-g]").forEach(e=>e.checked=localStorage.getItem(KEY+"c"+e.dataset.g)==="1");document.querySelectorAll("[data-q]").forEach(e=>{let v=localStorage.getItem(KEY+"q"+e.dataset.q);if(v!==null)e.value=v});document.querySelectorAll("[data-item]").forEach(e=>e.checked=localStorage.getItem(KEY+"i"+e.dataset.item)==="1");["goodsMemo","freeMemo","hotelCost","parkCost","tollCost","gasCost"].forEach(id=>{let v=localStorage.getItem(KEY+id); if(v!==null)document.getElementById(id).value=v});calc();}
+function calc(){let total=0;document.querySelectorAll("[data-g]").forEach(cb=>{let i=Number(cb.dataset.g);let q=Number(document.querySelector(`[data-q="${i}"]`).value||0); if(cb.checked)total+=GOODS[i][1]*q;});document.getElementById("total").textContent=yen(total);let p=document.getElementById("perk");if(total>=15000){p.textContent="🎉 15,000円突破！特典ライン";p.classList.add("ok");}else{p.textContent="特典ラインまであと"+yen(15000-total);p.classList.remove("ok");}}
+function clearAll(){if(!confirm("物販チェックをクリアする？"))return;document.querySelectorAll("[data-g]").forEach(e=>e.checked=false);document.querySelectorAll("[data-q]").forEach(e=>e.value=0);save();calc();}
+function setOne(){document.querySelectorAll("[data-g]").forEach(e=>{if(e.checked)document.querySelector(`[data-q="${e.dataset.g}"]`).value=1;});save();calc();}
+render();load();document.addEventListener("change",()=>{save();calc();});document.addEventListener("input",()=>{save();calc();});
+</script>
+</body></html>
